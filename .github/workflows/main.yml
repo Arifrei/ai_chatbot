@@ -1,0 +1,27 @@
+name: CI
+# controls when the workflow will run
+on: 
+# Triggers workflow on specific events
+  push:
+    branches: [ master ]
+  pull_request: 
+    branches: [ master ]
+
+# Allows you to run workflow manually
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+
+    steps:
+
+      -uses: actions/checkout@v3
+      -name: Run a one line script
+       run: echo Hello, World!
+
+      -name: Run a multi line script
+       run: |
+         echo Add other actions to build,
+         echo test, and deploy your project.
