@@ -89,5 +89,9 @@ def index():
             answer = result['messages'][-1].content
     return render_template('index.html', answer=answer)
 
+@app.route("/test")
+def test():
+    return "<h1>This is a test route running in Docker!</h1>"
+
 if __name__ == '__main__':
     app.run(debug=True)
