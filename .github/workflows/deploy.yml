@@ -20,6 +20,12 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Show Azure Account
+      run: az account show
+
+    - name: List ACR Repositories
+      run: az acr repository list --name chatbotacr38237 || echo "No repo"
+
     - name: Log in to Azure Container Registry
       run: |
         az acr login --name chatbotacr38237
