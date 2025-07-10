@@ -1,0 +1,40 @@
+name: CI
+
+# controls when the workflow will run
+on: 
+# Triggers workflow on specific events
+  # push:
+  #   branches: [ master ]
+  # pull_request: 
+  #   branches: [ master ]
+
+# Allows you to run workflow manually
+  workflow_dispatch:
+    inputs:
+      name:
+        # Description that will show in the UI when prompting
+        description: 'Person to greet'
+        # Default value if no value is provided
+        default: 'World'
+        # Mark required
+        required: true
+
+jobs:
+
+  greet:
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Send greeting
+      run: echo "Hello ${{ github.event.inputs.name }}"
+
+
+      # - uses: actions/checkout@v3
+      # - name: Run a one line script
+      #   run: echo Hello, World!
+
+      # - name: Run a multi line script
+      #   run: |
+      #    echo Add other actions to build,
+      #    echo test, and deploy your project.
